@@ -1,4 +1,5 @@
 const userController = require('../controller/user');
+const {check} = require('express-validator');
 
 module.exports = (app) => {
 
@@ -8,10 +9,19 @@ module.exports = (app) => {
         })
     });
 
-    app.get('/api/users', userController.getAllUsers);
+    app.get('/users', userController.getAllUsers);
 
-    app.post('/api/user/create', userController.create);
+    app.post('/user/create',
+        [
+            check('phone', 'Некорректный телефон').isLength({min: 10}),
+            check('password', 'Пароль слишком короткий').isLength({min: 5})
+        ],
+        userController.create);
 
-    app.put('/api/user/:userId', userController.update);
+    app.put('/user/:userId', userController.update);
+
+    app.post('/user/login',[
+        check('phone', 'Некорректный телефон').isLength({min: 10}),
+    ], userController.login);
 
 };

@@ -1,4 +1,8 @@
 {
+  "port": 5000,
+  "db": "",
+  "jwtKey": "0246810",
+
   "development": {
     "username": "postgres",
     "password": 777777,
@@ -24,4 +28,6 @@
     "dialect": "mysql",
     "operatorsAliases": false
   }
+
+
 }
