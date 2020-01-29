@@ -16,7 +16,7 @@ module.exports = {
                 res.status(201).send(productCollection);
             }
             else{
-                re.status(404).send("User Not Found")
+                res.status(404).send("User Not Found")
             }
         }
         catch(e){
